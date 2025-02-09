@@ -1,0 +1,16 @@
+//quick sort
+
+it is also a divide and conquer algorithm. it works by selecting a 'pivot' element from the array and partitioning the other elements
+time = o(nlongn)
+
+[4,6,2,5,7,9,1,3]
+
+step 1
+pick pivot  ,it can be any element in the array
+pivot = 4
+
+place pivot in the correct position in the array
+
+
+step 2
+smaller on the left and larger on the right of the pivot
