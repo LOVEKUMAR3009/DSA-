@@ -2,8 +2,7 @@ package array2.setoperation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+// import java.util.Set;
 
 public class Intersection {
   public static void main(String[] args) {
