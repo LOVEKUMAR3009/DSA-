@@ -1,8 +1,0 @@
-algorithm
-it works on divide and conquer approach ,first divide and then conquer
-this algo divide the array hypothatically 
-
-
-time complexity = (Nlog2N)
-
-space =O(n)
