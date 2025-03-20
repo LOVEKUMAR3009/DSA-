@@ -6,4 +6,7 @@ public class Swapping {
     arr[firstIndex] = arr[lastIndex] ;
     arr[lastIndex] = temp ;
   }
+
+
+  
 }

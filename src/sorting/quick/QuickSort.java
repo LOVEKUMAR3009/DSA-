@@ -7,7 +7,7 @@ import sorting.selction.Swapping;
 public class QuickSort {
   public static void main(String[] args) {
   //test
-  int[] array = { 5, 2, 8, 1, 9};
+  int[] array = { 5, 2,8, 1, 9,9};
   quickSort(array, 0, array.length-1);
   System.out.println(Arrays.toString(array));
 
@@ -30,10 +30,10 @@ public class QuickSort {
   int i = low;
   int j = high;
   while (i<j) {
-    while(arr[i] <= pivot && i<= high){
+    while(i<= high && arr[i] <= pivot ){
       i++;
     }
-    while(arr[j]> pivot && j>=low){
+    while(j>=low && arr[j]>pivot ){
       j--;
     }
     if(i<j){
