@@ -12,11 +12,14 @@ public class UpperBound {
   
   public static int upperBound(int[] array,int target){
     /*
-     * what is upper bound 
-     * when the arr[i]>target;
+     * smallest index such that arr[index]>x;
      */
     int n = array.length;
+    // default ans if all the element are smaller than then the length will be hypothetical answer 
+
+    // this function will return the index from which the number is greter  
     int result = array.length;
+    
     int left = 0;
     int right = n - 1;
     while (left <= right) {

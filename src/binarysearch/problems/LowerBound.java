@@ -12,7 +12,11 @@ public class LowerBound {
   }
 
   /*
-   * find the index whose value is greter or equal than the target
+   * the smallest index such that arr[ind] >=x; or we can say the first index where the number occured 
+   * 
+   * if the number is more the last index number than the ans is length of the array
+   * 
+   * it will return the point from where the number is either equal or greater than the number
    */
   public static int lowerBound(int[] array,int target){
     int result = array.length;
@@ -30,7 +34,4 @@ public class LowerBound {
     }
     return result;
   }
-  
-
- 
 }
