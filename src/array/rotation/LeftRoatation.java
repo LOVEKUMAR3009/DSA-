@@ -9,10 +9,10 @@ public class LeftRoatation {
     int [] arr = {9,1,2,3,4,5,6};
 
 
-    // leftRotatedByOne(arr);
-    // leftRotatedBy_D_Place(arr, 8);
-    // leftRotatedBy_D_Place2(arr, 3);
-    leftRotatedBy_D_PlaceOptimal(arr, 3);
+    leftRotatedByOne(arr);
+    // // leftRotatedBy_D_Place(arr, 8);
+    // // leftRotatedBy_D_Place2(arr, 3);
+    // leftRotatedBy_D_PlaceOptimal(arr, 3);
     System.out.println(Arrays.toString(arr));
   }
 

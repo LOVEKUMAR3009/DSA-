@@ -1,21 +1,12 @@
 package binarysearch.problems.rotatedsortedarray;
 
-public class FindElement {
+public class FindElementInDuplicate {
   public static void main(String[] args) {
-    int[] arr = {3,3,3,3,1,2,3};
-    System.out.println(findelement(arr, 1));
+    int[] arr = {1,0,1,1,1};
+    System.out.println(findelement(arr, 0));
   }
 
-  
-   /*
-    * in binary search we compare the target  with the mid and then peroform a check which half should be eleminated .
-    we can eleminate because we know that that half is sorted .but in rotated sorted array we don't know which half is sorted .so we have to identify first which half is sorted than on the basis of that we can elimate one half.
-    */
-
-  
-
-
-  public static int findelement(int[]arr,int target){
+  public static boolean findelement(int[]arr,int target){
     int left  = 0;
     int right = arr.length-1;
 
@@ -23,11 +14,18 @@ public class FindElement {
       int mid = left +(right-left)/2;
       // element found
       if(arr[mid] == target){
-        return mid;
+        return true;
 
+      }
+
+      if(arr[mid]==arr[left] && arr[mid]==arr[right]){
+        left++;
+        right--;
+        continue;
       }
       
       // left half is sorted
+    
       if(arr[left]<=arr[mid]){
         if(arr[left]<= target && target<=arr[mid]){
           // if target is greater than mid then it must be in right half
@@ -50,6 +48,6 @@ public class FindElement {
         }
       }
     }
-    return -1;
+    return false;
   }
 }

@@ -6,8 +6,8 @@ public class BinarySearch {
   // this search function takes an array of integers and a target value as input
   // and its only works on sorted array
   public static void main(String[] args) {
-    int[] arr = {1,3,4,5,7,9,11,14,15,19};
-    System.out.println(binarySearch(arr,123));
+    int[] arr = {3,3,3,3,1,2,3};
+    System.out.println(binarySearch(arr,1));
   }
   public static int binarySearch(int[] array, int target) {
     int left = 0;
