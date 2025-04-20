@@ -7,14 +7,14 @@ import sorting.selction.Swapping;
 public class QuickSort {
   public static void main(String[] args) {
   //test
-  int[] array = { 5, 2,8, 1, 9,9};
+  int[] array = { 5, 5,2,8, 1, 9,9};
   quickSort(array, 0, array.length-1);
   System.out.println(Arrays.toString(array));
 
 
   }
   public static void quickSort(int[] array,int low,int high) {
-    // base case that stops the recursion because if the array has 1 or 0 elements it is already sorted
+    // base case that stops the recursion because if the array has 1 or 0 elements it is already sorted recursion because if the array has 1 or 0 elements it is already sorted 
    if(low<high){
     int partitionIndex = partition(array,low,high);
     quickSort(array, low,partitionIndex-1);

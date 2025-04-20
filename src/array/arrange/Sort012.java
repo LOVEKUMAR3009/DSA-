@@ -6,7 +6,7 @@ import sorting.selction.Swapping;
 
 public class Sort012 {
   public static void main(String[] args) {
-    int [] arr = {1,2,1};
+    int [] arr = {1,2,1,0,0,0,1,2,2};
     sort012Optimal(arr);
     System.out.println(Arrays.toString(arr));
   }

@@ -1,5 +1,7 @@
 package trees.bst;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree {
   Node root;
   BinarySearchTree(int data){
@@ -10,16 +12,16 @@ public class BinarySearchTree {
   }
   public static void main(String[] args) {
     BinarySearchTree bst = new BinarySearchTree();
-    Node root = new Node(20);
-    bst.addNode(root,10);
-    bst.addNode(root,20);
-    bst.addNode(root,30);
-    bst.addNode(root,40);
-    bst.preOrder(root);
+    Node root = null;
+    // bst.addNode(root,10);
+    // bst.addNode(root,20);
+    // bst.addNode(root,30);
+    // bst.addNode(root,40);
+    // bst.preOrder(root);
     System.out.println();
-    bst.inOrder(root);
-    System.out.println();
-    bst.postOrder(root);
+    
+     ArrayList<Integer> ans =bst.inOrder(root);System.out.println(ans);
+    // bst.postOrder(root);
     // System.out.println(root.left.data);
   }
 
@@ -57,13 +59,15 @@ public class BinarySearchTree {
     preOrder(root.right);
 
   }
-  public void inOrder(Node root){
+  public ArrayList<Integer> inOrder(Node root){
+    ArrayList<Integer> ans = new ArrayList<>();
     if(root == null){
-      return ;
+      return ans;
     }
-    inOrder(root.left);
-    System.out.print(root.data+" ");
-    inOrder(root.right);
+     ans.addAll(inOrder(root.left));
+    ans .add(root.data);
+    ans.addAll(inOrder(root.right));
+    return ans;
 
   }
   public void postOrder(Node root){

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MergeSort {
   public static void main(String[] args) {
-    int [] arr = {3,2,1,5,7,6};
+    int [] arr = {2,5,6,1};
     mergeSort(arr,0,arr.length-1);
     // test(arr);
     System.out.println(Arrays.toString(arr));
@@ -23,6 +23,11 @@ public class MergeSort {
     merge(arr,low,mid,high);
     return ;
   }
+
+
+
+
+
 
   public static void merge(int[]arr,int low,int mid,int high){
     int [] nums = new int[high-low+1];
@@ -63,11 +68,5 @@ public class MergeSort {
   }
 
   //test wheather array is pass by reference or value in java
-
-  public static void test(int[]arr) {
-    for(int i=0;i<arr.length;i++){
-      arr[i]=1;
-    }
-  }
   //array is pass by refrence
 }

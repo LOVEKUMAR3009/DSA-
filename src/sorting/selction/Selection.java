@@ -15,7 +15,7 @@ public class Selection {
     for (int i = 0; i < n-1; i++){
       //let assume starting index has smallest number
       int minIndex = i;
-      for (int j = i;j< n;j++){
+      for (int j = i+1;j< n;j++){
         //check for minimum index
         if(nums[j]<nums[minIndex]){
           minIndex = j;

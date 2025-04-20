@@ -22,8 +22,7 @@ public class Insertion {
       while(j>0 && array[j]<array[j-1]){
         Swapping.swap(array, j-1, j);
         j--;
-      }
-      
+      }     
     }
     return array;
   }
