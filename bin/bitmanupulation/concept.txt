@@ -1,0 +1,10 @@
+length of decimal number in binary is log2N;
+
+int 13 = 1101 in binary;
+for int memory is 32 bits , but the number of 28 bit will be 
+
+
+
+int 4 bytes
+long = 8 bytes
+
