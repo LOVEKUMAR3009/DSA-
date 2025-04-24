@@ -25,22 +25,14 @@ public interface LinkedListInterface {
     void deleteLastNode();
     
     // Search
-    Node search(int value);
+    // Node search(int value);
     
     // Sorting and duplicates
-    Node sortList(Node head);
-    Node mergeTwoLists(Node l1, Node l2);
-    void removeDuplicates();
     
     // Checks
-    boolean hasLoop();
-    Node LoopStart();
-    Node getIntersectionNode(Node l1,Node l2);
     
     // Utility
     int length();
-    void reverse();
     void display();
     void clear();
-    Node middleNode();
 }

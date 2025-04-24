@@ -1,9 +1,13 @@
 package linkedlist.single;
 
-import linkedlist.single.function.RemoveDuplicate;
+import linkedlist.single.collection.Arrange;
+import linkedlist.single.collection.Check;
+import linkedlist.single.collection.Extra;
+import linkedlist.single.collection.Find;
+import linkedlist.single.collection.Sort;
 
 public class SingleList implements LinkedListInterface {
-  Node head;
+  public Node head;
       /********************************* insert at end*****************************************/
   // insert using data
   public void insertAtEnd(int data) {
@@ -268,139 +272,18 @@ public class SingleList implements LinkedListInterface {
 /************************************************searching operation***************************************** */
 
 
-  public Node search(int value) {
-    Node temp = head;
-    while (temp != null) {
-        if (temp.val == value) {
-            return temp;  // Return the node if found
-        }
-        temp = temp.next;
-    }
-    System.out.println("Value " + value + " not found in the list.");
-    return null;  // Return null if not found
-  }
+ 
 
 
 /***********************************sorting of list***************************************************** */
-  public Node sortList(Node head) {
-    if (head == null || head.next == null) return head;
-
-    // Step 1: Split the list into two halves
-    Node mid = getMiddle(head);
-    Node rightHead = mid.next;
-    mid.next = null; // break the list
-
-    // Step 2: Sort each half
-    Node left = sortList(head);
-    Node right = sortList(rightHead);
-
-    // Step 3: Merge sorted halves
-    return mergeTwoLists(left, right);
-  }
-
-  // Find middle node (safe split)
-  private Node getMiddle(Node head) {
-    if (head == null || head.next == null) return head;
-
-    Node slow = head;
-    Node fast = head;
-    Node prev = null;
-
-    while (fast != null && fast.next != null) {
-        prev = slow;
-        slow = slow.next;
-        fast = fast.next.next;
-    }
-
-    return prev;
-  }
-
-  // Merge two sorted lists
-  public Node mergeTwoLists(Node l1, Node l2) {
-    Node dummy = new Node(0);
-    Node tail = dummy;
-
-    while (l1 != null && l2 != null) {
-        if (l1.val <= l2.val) {
-            tail.next = l1;
-            l1 = l1.next;
-        } else {
-            tail.next = l2;
-            l2 = l2.next;
-        }
-        tail = tail.next;
-    }
-
-    // Append remaining nodes
-    if (l1 != null) tail.next = l1;
-    else tail.next = l2;
-
-    return dummy.next;
-  }
-
-
-  public void removeDuplicates() {
-    Node current = head;
-    while (current != null && current.next != null) {
-        if (current.val == current.next.val) {
-            current.next = current.next.next;
-        } else {
-            current = current.next;
-        }
-    }
-  }
 
 
   /******************************************************check operation ************************************* */
 
 
-    public boolean hasLoop() {
-      Node slow = head, fast = head;
-      while (fast != null && fast.next != null) {
-          slow = slow.next;
-          fast = fast.next.next;
-          if (slow == fast) return true;
-      }
-      return false;
-    }
-    public Node LoopStart() {
-      Node slow = head, fast = head;
-      while (fast != null && fast.next != null) {
-          slow = slow.next;
-          fast = fast.next.next;
-          if (slow == fast){
-            slow = head;
-                while(slow!=fast){
-                    slow= slow.next;
-                    fast = fast.next;
-                }
-                return slow;
-          }
-      }
-      return null;
-    }
 
-    public Node getIntersectionNode(Node headA, Node headB) {
-      if(headA==null || headB==null) return null;
-      Node t1 = headA;
-      Node t2 = headB;
-      // if(t1==t2) return t1;
-      while(t1!=t2){
-          t1 = t1.next;
-          t2 = t2.next;
-          if(t1==t2){
-              return t1;
-          }
-          if(t1==null){
-              t1 = headB;
-          }
-          if(t2 == null)
-          {
-              t2 = headA;
-          }
-      }
-      return t1;
-  }
+ 
+
 
   /******************************************basics of linked list******************************************/
   // length of the node
@@ -417,21 +300,11 @@ public class SingleList implements LinkedListInterface {
 
   // reverse the list
 
-  public void reverse() {
-    Node prev = null;
-    Node current = head;
-    while (current != null) {
-        Node next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
-    }
-    head = prev;
-  }
+
 
   // display all the node
   public void display() {
-    Node loopcheck = LoopStart();
+    Node loopcheck = Find.LoopStart(this.head);
     Node temp = head;
     if(loopcheck!=null){
       while (temp != loopcheck) {
@@ -456,23 +329,12 @@ public class SingleList implements LinkedListInterface {
       }
       System.out.println("null");
     }
-   
+  
   }
 
 
   public void clear() {
     head = null;
-  }
-
-  public Node middleNode() {
-    if(head == null ) return head;
-    Node slow = head;
-    Node fast = head;
-    while(fast!=null && fast.next !=null){
-    slow = slow.next;
-    fast = fast.next.next;
-    }
-    return slow ;
   }
 
 
@@ -484,21 +346,22 @@ public class SingleList implements LinkedListInterface {
     SingleList list = new SingleList();
     SingleList list2 = new SingleList();
     list.insertAtEnd(1);
+    // list.insertAtEnd(1);
     list.insertAtEnd(2);
-    list.insertAtEnd(3);
-    // list.insertAtEnd(3);
-    // list.insertAtEnd(4);
-    list.insertAtEnd(4);
+    list.insertAtEnd(2);
     list.insertAtEnd(5);
-    list.insertAtEnd(6);
-    // RemoveDuplicate.deleteDuplicates(list.head);
-    RemoveDuplicate.reorderList(list.head);
-
- 
+    list.insertAtEnd(7);
+    list.insertAtEnd(8);
+    list.insertAtEnd(10);
+    // Extra.sumOfList(list.head, list2.head);
     // list.display();
-    // list2.display();
-    // System.out.println(list.getIntersectionNode(list.head, list2.head).val);
-    // System.out.println(list.hasLoop());
+    // list.insertAtEnd(5);
+    // System.out.println(Find.getMiddle(list.head).val);
+    System.out.println(Find.binarySearch(list.head, 1));
+
+    // System.out.println(Check.isPallindrom(list.head));
+    // Arrange.display(Arrange.deleteEvenValue2(list.head));
+    // Arrange.deleteDuplicates(list.head);
   }
 
 }
