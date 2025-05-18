@@ -1,7 +1,11 @@
 package trees.avl;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+
+import javax.sound.sampled.Line;
 
 public class AVLTree implements AVLInterface {
   private Node root;
@@ -16,8 +20,7 @@ public class AVLTree implements AVLInterface {
     if (root == null){
       return 0;
     }
-    return root.height;
-    
+    return root.height;  
   }
   
   @Override
@@ -44,26 +47,25 @@ public class AVLTree implements AVLInterface {
 
     // Update height
     root.height = 1 + Math.max(height(root.left), height(root.right));
-
     // Check balance
     int balance = getBalance(root);
 
-    // Left Left Case
-    if (balance > 1 && key < root.left.data)
+    // Left Left Case and the second check to specify if we have to perfomr single or double rotation
+    if (balance > 1 && getBalance(root.left)>=0)
         return rightRotate(root);
 
     // Right Right Case
-    if (balance < -1 && key > root.right.data)
+    if (balance < -1 && getBalance(root.right)<=0)
         return leftRotate(root);
 
     // Left Right Case
-    if (balance > 1 && key > root.left.data) {
+    if (balance > 1 && getBalance(root.left)<0) {
         root.left = leftRotate(root.left);
         return rightRotate(root);
     }
 
     // Right Left Case
-    if (balance < -1 && key < root.right.data) {
+    if (balance < -1 && getBalance(root.right)>0) {
         root.right = rightRotate(root.right);
         return leftRotate(root);
     }
@@ -74,6 +76,11 @@ public class AVLTree implements AVLInterface {
   public Node insert(int key) {
     this.root = insert(this.root, key);  // FIX: update class-level root
     return this.root;
+  }
+
+  public Node delete(int key){
+    root = delete(root, key);
+    return root;
   }
 
 
@@ -91,10 +98,12 @@ public class AVLTree implements AVLInterface {
     } else {
         // Node to be deleted found
         if (root.left == null || root.right == null) {
+
             root = (root.left != null) ? root.left : root.right;
-        } else {
+        } 
+        else {
             // Node with two children
-            Node successor = getSuccessor(root.right);
+            Node successor = getSuccessor(root);
             root.data = successor.data;
             root.right = delete(root.right, successor.data);
         }
@@ -134,7 +143,7 @@ public class AVLTree implements AVLInterface {
   }
 
   private Node getSuccessor(Node root) {
-    Node current = root;
+    Node current = root.right;
     while (current.left != null) {
         current = current.left;
     }
@@ -163,7 +172,7 @@ public class AVLTree implements AVLInterface {
     return temp;
   }
 
-   public ArrayList<Integer> inOrder(Node root){
+   public List<Integer> inOrder(Node root){
     ArrayList<Integer> ans = new ArrayList<>();
     if(root == null){
       return ans;
@@ -172,8 +181,8 @@ public class AVLTree implements AVLInterface {
     ans .add(root.data);
     ans.addAll(inOrder(root.right));
     return ans;
-
   }
+
   public static void main(String[]args){
     AVLTree tree = new AVLTree();
     tree.insert(10);
@@ -183,9 +192,40 @@ public class AVLTree implements AVLInterface {
     tree.insert(50);
     tree.insert(25);
     tree.insert(35);
+    tree.delete(40);
+    tree.display();
     // tree.insert(45);
     List<Integer> result =  tree.inOrder(tree.root);
-    System.out.println(result);
+    // System.out.println();
+    // System.out.println(result);
     
+  }
+
+
+
+  public void display(){
+    if(root == null) return;
+    Queue<Node > q = new LinkedList<>();
+    q.add(root);
+    q.add(null);
+    while(!q.isEmpty()){
+      Node temp = q.poll();
+      if(temp == null){
+        if(q.isEmpty()){
+          break;
+        }
+        System.out.println();
+        q.add(null);
+      }
+      else {
+        System.out.print(temp.data + " ");
+        if(temp.left!=null){
+          q.add(temp.left);
+        }
+        if(temp.right!=null){
+          q.add(temp.right);
+        }
+      }
+    }
   }
 }
